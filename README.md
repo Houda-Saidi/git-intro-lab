@@ -65,7 +65,7 @@ Short, descriptive text that accompanies a commit and communicates the change th
 
 Commits make up the essence of your project and allow you to jump to the state of a project at any other commit.
 
-### Adding file to the staging environment
+### Step 3: Add a file to the staging environment
 
 To add a file to a commit, you first need to add it to the staging environment. To stage modified files in Git, you use the **git add** command followed by the filenames or paths of the files you want to stage. For example:
 
@@ -75,4 +75,61 @@ $ git add <file1> <file2>
 Alternatively, you can use the **git add .** command to stage all modified files in the current directory and its subdirectories:
 ```
 $ git add .
+```
+When you checl the status
+
+```
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   <your file>
+```
+### Step 4: Create a commit
+
+It's time to create your first commit!
+
+Run the command git commit -m "Your message about the commit"
+
+For example
+
+```
+$ git commit -m "this is the first commit"
+[master (root-commit) f6b305d] this is the first commit
+ 1 file changed, 78 insertions(+)
+ create mode 100644 README.md
+```
+The message at the end of the commit should be something related to what the commit contains - maybe it's a new feature, maybe it's a bug fix, maybe it's just fixing a typo. 
+
+![git file changes](https://git-scm.com/book/en/v2/images/lifecycle.png)
+
+### Step 5: Create a new branch
+
+Say you want to make a new feature but are worried about making changes to the main project while developing the feature. This is where git branches come in. 
+
+Branches allow you to move back and forth between 'states' of a project. 
+
+Official git docs describe branches this way: 
+"A branch in Git is simply a lightweight movable pointer to one of these commits.’ 
+
+For example, if you want to add a new page to your website you can create a new branch just for that page without affecting the main part of the project. Once you're done with the page, you can merge your changes from your branch into the primary branch. When you create a new branch, Git keeps track of which commit your branch 'branched' off of, so it knows the history behind all the files. 
+
+Let's say you are on the **primary branch** and want to create a **new branch** to develop your web page. Run **git checkout -b <my branch name>**. This command will automatically create a new branch and then 'check you out' on it, meaning git will move you to that branch, off of the primary branch.
+
+```
+$ git branch
+* master
+```
+By default, every git repository’s first branch is named `master` (and is typically used as the primary branch in the project). 
+
+```
+$ git checkout -b branch-example  
+Switched to a new branch 'branch-example'
+
+$ git branch
+* branch-example
+  master
 ```
