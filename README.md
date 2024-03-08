@@ -176,3 +176,128 @@ branch 'master' set up to track 'origin/master'.
 
 Now we'll push the commit in your branch to your new GitHub repo. This allows other people to see the changes you've made. If they're approved by the repository's owner, the changes can then be merged into the primary branch.
 
+To push changes onto a new branch on GitHub, you'll want to run **git push -u origin yourbranchname**. GitHub will automatically create the branch for you on the remote repository:
+
+```
+$ git push -u origin branch-example
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 281 bytes | 281.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: 
+remote: Create a pull request for 'branch-example' on GitHub by visiting:
+To https://github.com/mbeggas/git-intro-lab.git
+ * [new branch]      branch-example -> branch-example
+branch 'branch-example' set up to track 'origin/branch-example'.
+```
+
+If you refresh the GitHub page, you'll see note saying a branch with your name has just been pushed into the repository. You can also click the 'branches' link to see your branch listed there.
+
+![branches in githb](./assets/github-branches.png)
+
+### Step 8: Create a pull request (PR)
+
+A pull request (or PR) is a way to alert a repo's owners that you want to make some changes to their code. It allows them to review the code and make sure it looks good before putting your changes on the primary branch.
+
+This is what the PR page looks like before you've submitted it:
+
+![pull request in github](https://cloud.githubusercontent.com/assets/5241432/9189500/4688c07e-3fb7-11e5-99ed-d75b50ed9e48.png)
+
+And this is what it looks like once you've submitted the PR request:
+
+![submitted pull request in github](https://cloud.githubusercontent.com/assets/5241432/9189528/b39a7176-3fb7-11e5-87b1-7fed3e63b6bb.png)
+
+You might see a big green button at the bottom that says 'Merge pull request'. Clicking this means you'll merge your changes into the primary branch..
+
+### Step 9: Merge a PR
+
+Go ahead and click the green 'Merge pull request' button. This will merge your changes into the primary branch.
+
+![After merging](https://cloud.githubusercontent.com/assets/5241432/9189587/76631d98-3fb8-11e5-9fdb-17e7dec1c2a4.png)
+
+### Step 10: Get changes on GitHub back to your computer
+
+Right now, the repo on GitHub looks a little different than what you have on your local machine. For example, the commit you made in your branch and merged into the primary branch doesn't exist in the primary branch on your local machine.
+
+In order to get the most recent changes that you or others have merged on GitHub, use the git pull origin master command (when working on the primary branch). In most cases, this can be shortened to “git pull”.
+
+```
+$  git pull origin master
+Updating 227428b..9ea49d3
+Fast-forward
+ file.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file.txt
+```
+
+You can use the **git log** command to see all new commits.
+
+```
+$ git log
+commit 9ea49d3e07ae0c08e041a8700fe9b5a90cbec3d8 (HEAD -> master, origin/master)
+Merge: 227428b 6f86ff3
+Author: mbeggas <37764410+mbeggas@users.noreply.github.com>
+Date:   Fri Mar 8 17:23:51 2024 +0100
+
+    Merge pull request #1 from mbeggas/branch-example
+
+    Adding a new file
+
+:...skipping...
+commit 9ea49d3e07ae0c08e041a8700fe9b5a90cbec3d8 (HEAD -> master, origin/master)
+Merge: 227428b 6f86ff3
+Author: mbeggas <37764410+mbeggas@users.noreply.github.com>
+Date:   Fri Mar 8 17:23:51 2024 +0100
+
+    Merge pull request #1 from mbeggas/branch-example
+
+    Adding a new file
+
+commit 6f86ff3ed750df2bb85cbf125453a7157c31d135 (origin/branch-example, branch-example)
+Author: mbeggas <mbeggas@gmail.com>
+Date:   Fri Mar 8 17:11:01 2024 +0100
+
+    adding a file
+
+commit 227428b687a41d736d343c78442ff1fb19f50aab
+Author: mbeggas <mbeggas@gmail.com>
+Date:   Fri Mar 8 17:09:07 2024 +0100
+
+    some changes
+
+:...skipping...
+commit 9ea49d3e07ae0c08e041a8700fe9b5a90cbec3d8 (HEAD -> master, origin/master)
+Merge: 227428b 6f86ff3
+Author: mbeggas <37764410+mbeggas@users.noreply.github.com>
+Date:   Fri Mar 8 17:23:51 2024 +0100
+
+    Merge pull request #1 from mbeggas/branch-example
+
+    Adding a new file
+
+commit 6f86ff3ed750df2bb85cbf125453a7157c31d135 (origin/branch-example, branch-example)
+Author: mbeggas <mbeggas@gmail.com>
+Date:   Fri Mar 8 17:11:01 2024 +0100
+
+    adding a file
+
+commit 227428b687a41d736d343c78442ff1fb19f50aab
+Author: mbeggas <mbeggas@gmail.com>
+Date:   Fri Mar 8 17:09:07 2024 +0100
+
+    some changes
+
+commit cc30a929c7f4c859c3c0d992b5b4b5d00be02072
+Author: mbeggas <mbeggas@gmail.com>
+Date:   Fri Mar 8 16:13:01 2024 +0100
+
+    always in the lab description
+
+commit f6b305d8fcfdc877ccecf68d08c5d2802b86869e
+Author: mbeggas <mbeggas@gmail.com>
+Date:   Fri Mar 8 15:56:55 2024 +0100
+
+    this is the first commit
+```
