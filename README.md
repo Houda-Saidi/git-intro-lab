@@ -133,3 +133,46 @@ $ git branch
 * branch-example
   master
 ```
+
+### Step 6: Create a new repository on GitHub
+
+If you only want to keep track of your code locally, you don't need to use GitHub. But if you want to work with a team, you can use GitHub to collaboratively modify the project's code.
+
+To create a new repo on GitHub, log in and go to the GitHub home page. You can find the “New repository” option under the “+” sign next to your profile picture, in the top right corner of the navbar:
+
+![Create github rep](https://product.hubspot.com/hs-fs/hubfs/Git_1.png?width=1500&name=Git_1.png)
+
+After clicking the button, GitHub will ask you to name your repo and provide a brief description:
+
+![Create github rep](https://product.hubspot.com/hs-fs/hubfs/Git_2.png?width=1280&name=Git_2.png)
+
+
+Connect the remote repository (in this case, github) to the local repository
+
+Fir example:
+
+```
+$ git remote add origin https://github.com/mbeggas/git-intro-lab.git
+```
+Now push: send all changes in the local repository to the remote, in this case github. 
+
+For example:
+
+```
+$ git push -u origin master
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (6/6), 2.59 KiB | 883.00 KiB/s, done.
+Total 6 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/mbeggas/git-intro-lab.git
+ * [new branch]      master -> master
+branch 'master' set up to track 'origin/master'.
+```
+
+### Step 7: Push a branch to GitHub
+
+Now we'll push the commit in your branch to your new GitHub repo. This allows other people to see the changes you've made. If they're approved by the repository's owner, the changes can then be merged into the primary branch.
+
